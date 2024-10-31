@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from students import views  # Import views from your students app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),  # Set root URL to 'home' view
     path('students/', include('students.urls')),
     path('courses/', include('courses.urls')),
-    path('', include('students.urls')),  # Redirect to home view
 ]
+
