@@ -8,11 +8,31 @@
 </head>
 <body>
     <div class="container mt-5">
+        <!-- Header -->
         <h1 class="text-center">Welcome to the Student Page</h1>
+        <p class="text-center">Your portal for accessing profile information, contacts, and recent updates.</p>
+
+        <!-- Navigation Buttons -->
         <div class="text-center mt-4">
-            <a href="{% url 'student_profile' %}" class="btn btn-primary">Profile</a>
-            <a href="{% url 'student_contact' %}" class="btn btn-info">Contact</a>
+            <a href="{% url 'student_profile' %}" class="btn btn-primary mx-2">Profile</a>
+            <a href="{% url 'student_contact' %}" class="btn btn-info mx-2">Contact</a>
+            <!-- Note: Add a link to the courses page here if needed later. -->
+        </div>
+
+        <!-- Recent Updates Section -->
+        <div class="mt-5">
+            <h3>Recent Updates</h3>
+            <ul class="list-group mt-3">
+                <li class="list-group-item">New semester registration opens on Nov 5, 2024.</li>
+                <li class="list-group-item">Final exams will be held from Dec 12-22, 2024.</li>
+                <li class="list-group-item">Check out the new student portal for additional resources and announcements.</li>
+            </ul>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 py-3 bg-light">
+        <p>&copy; 2024 University Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -7,12 +7,56 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Main Content -->
     <div class="container mt-5">
         <h1 class="text-center">Instructors</h1>
-        <p class="text-center">Meet our course instructors!</p>
+        <p class="text-center">Meet our expert course instructors!</p>
+
+        <!-- Instructor Profiles Section -->
+        <div class="row mt-5">
+            {% for instructor in instructors %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ instructor.photo_url }}" class="card-img-top" alt="Instructor Photo">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ instructor.name }}</h5>
+                        <p class="card-text">{{ instructor.bio | truncatewords:15 }}</p>
+                        <p><strong>Specialty:</strong> {{ instructor.specialty }}</p>
+                        <div class="social-links mt-3">
+                            {% if instructor.twitter_url %}
+                                <a href="{{ instructor.twitter_url }}" target="_blank" class="btn btn-outline-primary btn-sm">Twitter</a>
+                            {% endif %}
+                            {% if instructor.linkedin_url %}
+                                <a href="{{ instructor.linkedin_url }}" target="_blank" class="btn btn-outline-info btn-sm">LinkedIn</a>
+                            {% endif %}
+                            {% if instructor.website_url %}
+                                <a href="{{ instructor.website_url }}" target="_blank" class="btn btn-outline-secondary btn-sm">Website</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No instructors found.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Back Button -->
         <div class="text-center mt-4">
             <a href="{% url 'courses_index' %}" class="btn btn-secondary">Back to Courses</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

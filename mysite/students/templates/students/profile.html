@@ -10,6 +10,43 @@
     <div class="container mt-5">
         <h1 class="text-center">Student Profile</h1>
         <p class="text-center">Here you can find your personal information.</p>
+
+        <!-- Profile Card -->
+        <div class="card mx-auto mt-5" style="width: 50%;">
+            <div class="card-body">
+                <h5 class="card-title text-center">Personal Information</h5>
+                <table class="table table-bordered mt-3">
+                    <tbody>
+                        <tr>
+                            <th>Full Name</th>
+                            <td>John Doe</td>
+                        </tr>
+                        <tr>
+                            <th>Student ID</th>
+                            <td>2024001</td>
+                        </tr>
+                        <tr>
+                            <th>Program</th>
+                            <td>BS Information Technology</td>
+                        </tr>
+                        <tr>
+                            <th>Year & Section</th>
+                            <td>3 - F3</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>johndoe@example.com</td>
+                        </tr>
+                        <tr>
+                            <th>Contact Number</th>
+                            <td>+1234567890</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
         <div class="text-center mt-4">
             <a href="{% url 'students_index' %}" class="btn btn-secondary">Back to Home</a>
         </div>

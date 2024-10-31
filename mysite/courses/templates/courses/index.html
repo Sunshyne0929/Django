@@ -7,12 +7,64 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Main Content -->
     <div class="container mt-5">
         <h1 class="text-center">Available Courses</h1>
+        <p class="text-center">Explore our wide range of courses and find the one that suits you best!</p>
+
+        <!-- Back Button to Home -->
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+        </div>
+
+        <!-- Filter/Search Bar -->
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-6">
+                <form method="GET" action="{% url 'courses_index' %}">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search courses..." aria-label="Search courses" aria-describedby="button-addon">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Course List -->
+        <div class="row mt-5">
+            {% for course in courses %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title }}</h5>
+                        <p class="card-text">{{ course.description | truncatewords:20 }}</p>
+                        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No courses found.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Additional Links -->
         <div class="text-center mt-4">
             <a href="{% url 'course_detail' %}" class="btn btn-primary">Course Details</a>
             <a href="{% url 'course_instructors' %}" class="btn btn-info">Instructors</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

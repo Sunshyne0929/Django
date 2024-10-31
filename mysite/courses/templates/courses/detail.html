@@ -7,12 +7,77 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Main Content -->
     <div class="container mt-5">
         <h1 class="text-center">Course Details</h1>
         <p class="text-center">Here you can find detailed information about the courses offered.</p>
+
+        <!-- Course Information Section -->
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h2>Course Title: {{ course.title }}</h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Description:</strong> {{ course.description }}</p>
+                <p><strong>Instructor:</strong> {{ course.instructor.name }}</p>
+                <p><strong>Duration:</strong> {{ course.duration }}</p>
+                <p><strong>Credits:</strong> {{ course.credits }}</p>
+                <p><strong>Prerequisites:</strong> {{ course.prerequisites }}</p>
+            </div>
+        </div>
+
+        <!-- Syllabus Section -->
+        <div class="card mt-4">
+            <div class="card-header bg-success text-white">
+                <h4>Syllabus</h4>
+            </div>
+            <div class="card-body">
+                <ul>
+                    {% for topic in course.syllabus %}
+                    <li>{{ topic }}</li>
+                    {% empty %}
+                    <li>No syllabus available.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Instructor Information Section -->
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <h4>Instructor Information</h4>
+            </div>
+            <div class="card-body text-center">
+                <h5>{{ course.instructor.name }}</h5>
+                <p>{{ course.instructor.bio }}</p>
+                <div class="social-links">
+                    {% if course.instructor.twitter_url %}
+                        <a href="{{ course.instructor.twitter_url }}" target="_blank" class="btn btn-outline-primary btn-sm">Twitter</a>
+                    {% endif %}
+                    {% if course.instructor.linkedin_url %}
+                        <a href="{{ course.instructor.linkedin_url }}" target="_blank" class="btn btn-outline-info btn-sm">LinkedIn</a>
+                    {% endif %}
+                    {% if course.instructor.website_url %}
+                        <a href="{{ course.instructor.website_url }}" target="_blank" class="btn btn-outline-secondary btn-sm">Website</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
         <div class="text-center mt-4">
             <a href="{% url 'courses_index' %}" class="btn btn-secondary">Back to Courses</a>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <p>&copy; 2024 Course Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
